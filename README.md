@@ -10,6 +10,12 @@
 
 数据库是有两个表，一个`user`，一个`todolist`，通过`userid`来判断是哪一个用户创建的任务，感觉表可以改进，但是不知道怎么改进，有想到一个方法是每一个用户一个表
 
+- todolist
 
+  ![image-20240128194256299](https://s2.loli.net/2024/01/28/5ITQJ79wBUslpgF.png)
+
+- user
+
+  ![image-20240128194237595](https://s2.loli.net/2024/01/28/wTLK6Dn5I7VyqAN.png)
 
 [就先这样吧](https://github.com/qsADXS/todolist "肯定不是不想写其他的")
