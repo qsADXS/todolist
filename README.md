@@ -4,7 +4,7 @@
 
 感觉SQL语句可以更精简一点
 
-[接口文档参考]("https://apifox.com/apidoc/shared-dfe01168-cd9f-4278-b88f-3e01b439ea4e")
+[接口文档参考](https://apifox.com/apidoc/shared-dfe01168-cd9f-4278-b88f-3e01b439ea4e)
 
 和任务有关的操作因为没有传token，所以多传了一个`String username`，~有参考了gpt的一些`token`代码~
 
