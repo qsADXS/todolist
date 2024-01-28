@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:mysql://8.134.24.31:3306/todolist?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: 不知道密码
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+jwt:
+  secret: ashduiahdwhfuihIUEHiuhiHHAWd8hilhOAWDjho8WAUYHDo8h3hukaHDIWAHihDAW78928ADyw8h289AHD892h98AHD8929hdfsAWHD892
+  expiration: 3600000  # 令牌过期时间，单位是毫秒
+#3600000
+server:
+  port: 8088
