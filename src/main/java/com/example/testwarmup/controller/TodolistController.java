@@ -28,8 +28,8 @@ public class TodolistController {
     }
     @DeleteMapping("/task/{id}")
     public Map<String,Object> delete(@PathVariable Integer id,
-                                     @RequestBody Map<String,Object> map){
-        return todolistServer.delete(id,map.get("username").toString());
+                                     @RequestParam String username){
+        return todolistServer.delete(id,username);
     }
     //这里前端要求将id放在body当中
     @PutMapping("/task")
