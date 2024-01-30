@@ -16,7 +16,7 @@ public class TodolistController {
         return todolistServer.addTodo(todolist);
     }
     @GetMapping("/task")
-    public Map<String, Object> getEvent(@RequestBody Map<String,Object> map){
+    public Map<String, Object> getEvent(@RequestParam Map<String,Object>map){
         map.putIfAbsent("status", -1);
         return todolistServer.getAllEvent(map.get("status").toString(),
                                             map.get("username").toString());
