@@ -11,13 +11,15 @@ public class TodolistController {
     @Autowired
     private TodolistServer todolistServer;
     @PostMapping("/task")
-    public Map<String, Object> creatEvent(@RequestBody Todolist todolist){
+    public Map<String, Object> creatEvent(@RequestBody Todolist todolist
+                                        ){
         return todolistServer.addTodo(todolist);
     }
     @GetMapping("/task")
-    public Map<String, Object> getEvent(@RequestParam String status,
-                                        @RequestBody Map<String,Object> map){
-        return todolistServer.getAllEvent(status, map.get("username").toString());
+    public Map<String, Object> getEvent(@RequestBody Map<String,Object> map){
+        map.putIfAbsent("status", -1);
+        return todolistServer.getAllEvent(map.get("status").toString(),
+                                            map.get("username").toString());
     }
     @PutMapping("/task/{id}")
     public Map<String,Object> update(@PathVariable Integer id,
@@ -28,6 +30,17 @@ public class TodolistController {
     public Map<String,Object> delete(@PathVariable Integer id,
                                      @RequestBody Map<String,Object> map){
         return todolistServer.delete(id,map.get("username").toString());
+    }
+    //这里前端要求将id放在body当中
+    @PutMapping("/task")
+    public Map<String,Object> update(@RequestBody Map<String,Object> map){
+        return todolistServer.update(Integer.valueOf(map.get(("id")).toString()),
+                                    map.get("username").toString());
+    }
+    @DeleteMapping("/task")
+    public Map<String,Object> delete(@RequestBody Map<String,Object> map){
+        return todolistServer.delete(Integer.valueOf(map.get(("id")).toString()),
+                                    map.get("username").toString());
     }
 
 }

@@ -27,7 +27,7 @@ public class TodolistServerImpl implements TodolistServer {
             userid = userMapper.findByUsername(todolist.getUsername()).getId();
         }catch (Exception e){
             response.put("code",-1);
-            response.put("mse","worry");
+            response.put("mse",e.getCause());
             return response;
         }
 
@@ -51,11 +51,15 @@ public class TodolistServerImpl implements TodolistServer {
             userid = userMapper.findByUsername(username).getId();
         }catch (Exception e){
             response.put("code",-1);
-            response.put("mse","worry");
+            response.put("mse",e.getCause());
             return response;
         }
-        List<Todolist> todolists = todolistMapper.findByUseridWhereStatus(userid,status);
-
+        List<Todolist> todolists;
+        if(Objects.equals(status, "-1")){
+            todolists = todolistMapper.findByUserid(userid);
+        }else {
+            todolists = todolistMapper.findByUseridWhereStatus(userid, status);
+        }
         Map<String, Object> data = new HashMap<>();
         data.put("item",todolists);
         data.put("total",todolists.size());
@@ -85,7 +89,7 @@ public class TodolistServerImpl implements TodolistServer {
             todolistMapper.updateStatus(status,UUID);
         }catch (Exception e){
             response.put("code",-1);
-            response.put("mse","worry");
+            response.put("mse",e.getCause());
             return response;
         }
         response.put("code",200);
@@ -107,7 +111,7 @@ public class TodolistServerImpl implements TodolistServer {
 
         }catch (Exception e){
             response.put("code",-1);
-            response.put("mse","worry");
+            response.put("mse",e.getCause());
             return response;
         }
         response.put("code",200);

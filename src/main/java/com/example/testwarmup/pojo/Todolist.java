@@ -1,6 +1,9 @@
 package com.example.testwarmup.pojo;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,14 +11,16 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties({"username", "userid"})
+//@JsonIgnoreProperties({"username", "userid"})
 public class Todolist {
     private Integer id;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Integer userid;
     private String content;
     private String start_time;
     private String end_time;
     private String status;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String username;
 
     public Todolist(String content, String start_time, String end_time, String status, String username) {
@@ -27,4 +32,6 @@ public class Todolist {
         this.status = status;
         this.username = username;
     }
+
+
 }
